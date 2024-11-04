@@ -1,0 +1,272 @@
+1> What Is OPPS are template without memory they are not real word entity
+classes contain some method 
+
+3> What are 6 pillars of  oops
+ans -> a> Objects
+        b> classes
+        c> encapsulation
+        d> inheritance
+        e> polymorphism
+        f> Abstraction
+
+4> What does class consist of --> a> methods
+                                  b> constructor
+                                  c> fields 
+                                  d> blocks
+                                  e> nested class
+
+
+5> Method --> a> Method is function which belongs to its class and objects;
+              Function can be used by any one
+              b> default access modifier is [ default ]
+
+6> Objects --> a> object is instance of class
+               b> object occupies memory
+               c> object have behaviour(methods)
+
+7> How to create objects
+   a> new keyword;
+   b> newInstance();
+   c> clone()
+   d> deserialization
+   e> factory method
+
+
+ public class animal 
+{
+      public void eat()
+      {
+         System.out.println("I am eating");
+         
+      }
+    
+       public  void main(String[] args) 
+       {
+         System.out.println("HEllO");
+       }
+}
+
+In this case main is also method of animal class but this program will be compiled but not executed
+because it require static main 
+
+What is static main and simple main -->A> for accessing main and eat we have to create an object because there is not memory give so these are not available
+So animal dog = new animal();
+B>
+
+public class animal 
+{
+      public static void eat()
+      {
+         System.out.println("I am eating");
+         
+      }
+    
+       public  void main(String[] args) 
+       {
+         System.out.println("HEllO");
+       }
+}
+
+What is static doing in case of eat --> In this memory will be provided to eat and we can use
+eat with  name of class animal.eat();
+
+Can we use Main of one function on another ---> Yes because it is method of a class and it can be called with object and with class name if it is not static
+
+
+public class dog 
+{
+   public static void main(String[] args) 
+   {
+       dog jojo = new dog();
+       System.out.println("Looo");
+
+       jojo.main(args);
+   }    
+}
+
+What will happen in above case --> it will go infinite loop but how is it running class calling its own method how is this happening because java run program from  static main only it will not run
+if static main is not present even if there is main this is verry different main and static main is very different because of memory will be given to static 
+ 
+
+      public static void eat()                       
+      {
+         System.out.println("I am eating");
+         help();
+         
+      }
+
+      public  void eat()
+      {
+         System.out.println("I am eating");
+         help();
+         
+      }
+
+Above example are different from each other in case of static eat while giving memory only 
+memory is given to eat but help is there and it is not static
+
+In case of public void eat() we have to create an whole object and memory will be given to all the methods inside that function
+ 
+
+
+
+----------------------------------------- Constructor ----------------------------------------------
+
+1> Constructor -> a> constructor is like method with similar name as class
+               b> constructor does not have any return type even void
+               c> public, protected, default, and private
+
+2> How do we run constructor ? a> by making an object  const obj = new animal();
+                            b> by using new animal();
+
+3> Why do we need constructor --> a> It is used to initialise the object 
+
+
+public class cons 
+{
+    public void hello()
+    {
+         System.out.println("Hello");
+    }
+
+
+       public static void main(String[] args) 
+       {
+            cons obj;
+            obj.hello();
+       }
+}
+
+In above example we have created an object obj but we cannot use obj.hello() because obj does not
+ have memory given to it is just an empty variable of type cons. So Constructor are used to initialize an object;
+
+4> Type of Constructor - a> Default Constructor
+                         b> No argument Constructor (user defined Constructor)
+                         c> Parametrised Constructor
+
+a> Default Constructor -> we do not create any constructor in class but while initializing the object use cons obj = new cons(); Here the compiler automatically creates the default constructor
+
+public class cons 
+{
+    public void hello()
+    {
+         System.out.println("Hello");
+    }
+
+
+       public static void main(String[] args) 
+       {
+            cons obj;
+            obj.hello();
+       }
+}
+
+In this case there is no constructor we have created;
+But when we do this cons obj = new cons();
+
+Here even though we don't have created a constructor but it initialize the object 
+because of default constructor created by the compiler
+
+
+
+b> No argument Constructor  -> created by user  just not created by the compiler
+ 
+ cons()
+{
+   System.out.println("hello"); 
+}
+
+
+3> Parameterized Constructor 
+
+public class cons 
+{
+    public  cons(String s)
+    {
+         System.out.println(s);
+    }
+
+
+       public static void main(String[] args) 
+       {
+            cons obj = new obj(); here this will show error because compile see there is an constructor created who is taking
+                                  string as input but while calling that constructor we are not passing the value
+            cons obj = new obj("hello");
+       }
+}
+
+
+
+
+
+
+
+-------------------------------------- Inheritance ------------------------------------------------
+Inheritance -> to inherit properties of a to b and from a to its child 
+1> (extends) keyword is used in to inherit properties of one class to another
+2> (is a relationship) also known as inheritance
+3> Inheritance is used to achieve reusability 
+4> By default every class inherits object
+5> Object is parent class of all classe
+
+example -> lets assume we two class animal and dog now do wants to become animal so he will inherit
+the properties of the animal so he will extend the animal Now dog is a animal but animal is not a dog
+
+
+4> Types of Inheritance
+   a> single inheritance (a->b)
+   b> Multi level (a->b->c)
+   c> Hierarchal   (a) 
+                  |   |
+                 (b)  (c)
+   
+ 
+  d> Multiple   (b)  (c)
+                  |    |
+                    (a)
+
+                                   java does not support multiple and hybrid (Diamond problem)
+                   (a) 
+                  |   |
+                 (b)  (c)
+   
+   d> Multiple   (b)  (c)
+                  |    |
+                    (a)
+
+
+Question : Why java do not support multiple and hybrid inheritance ?
+Answer   : Let we have 2 classes A and B both these 2 have a method called show()
+           now we have another class C which extends both A and B when c creates an 
+           object and call obj.show() then compiler gets confuse whoch show() to call
+           this is call [ Ambiguity error ]
+
+ public class diamond extends a, b --> this is not possible
+{
+     public static void main(String[] args) 
+     {
+         diamond obj = new diamond();
+     }
+}
+
+ class a
+ {  
+      void show()
+      {
+           System.out.println("showing a");
+      }    
+ }
+
+ class b extends a
+ {
+      void show()
+      {
+           System.out.println("showing b");
+      }
+ }
+
+
+
+Question : When we extends does child class inherits all the properties ?
+Answer   : No, private and constructor cannot can be inherited by child classes 
+   
