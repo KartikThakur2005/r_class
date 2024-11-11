@@ -1,10 +1,10 @@
 
 public class animal 
 {
-      public  void eat()
+      public   void eat()
       {
          System.out.println("I am eating");
-         help();
+         // help();
          
       }
     

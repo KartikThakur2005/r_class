@@ -1,4 +1,5 @@
-1> What Is OPPS are template without memory they are not real word entity
+1> What Is OPPS oops is object paradiam language 
+ what are classes -> classes are template without memory they are not real word entity
 classes contain some method 
 
 3> What are 6 pillars of  oops
@@ -55,7 +56,7 @@ B>
 
 public class animal 
 {
-      public static void eat()
+      public static void eat()s
       {
          System.out.println("I am eating");
          
@@ -76,7 +77,7 @@ Can we use Main of one function on another ---> Yes because it is method of a cl
 public class dog 
 {
    public static void main(String[] args) 
-   {
+   {/ 
        dog jojo = new dog();
        System.out.println("Looo");
 
@@ -230,7 +231,7 @@ the properties of the animal so he will extend the animal Now dog is a animal bu
                   |   |
                  (b)  (c)
    
-   d> Multiple   (b)  (c)
+   d> Hybrid     (b)  (c)
                   |    |
                     (a)
 
@@ -269,4 +270,337 @@ Answer   : Let we have 2 classes A and B both these 2 have a method called show(
 
 Question : When we extends does child class inherits all the properties ?
 Answer   : No, private and constructor cannot can be inherited by child classes 
+
+Question : Why Inheritance is used ?
+Answer   : Mainly if we want to reuse a specific function 
+
+----------------------------------------------------------------------------------------------------
+Question : How many relationship can be between classes
+Answer   : a> IS a relation
+             when we extends a class is a relation is created
+
+           b> Has a relation 
+             if we use an variable like
+          public class Student
+          {
+        
+                String name;
+                int id;
+
+          }
+Here student has a name
+and student has a id
+
+
+
+
+
+--------------------------------------- Polymorphism -----------------------------------------------
+
+Polymorphism --> many form ( like water) in java it is achieved by method
+
+Question : How many type of polymorphism are there ? 
+
+Answer : There are two type of Polymorphism 
+         1> Compile time :
+            Static
+            achieved by Method overloading
+
+         2> Run time 
+            Dynamic
+            method overriding
+
+Difference between method overloading and method overriding ?
+
+Method overloading                                     Method Overriding
+1> Same name of method                                1>Same name of method
+2> Inside Same Class                                  2> Different class
+3> Different Parameter                                3> Same Parameter
+
+
+Method overloading :
+
+class test
+{
+        void show()
+	{
+              sout(1);	
+ 	} 
+        void show(int x)
+        {
+            sout(2);
+        }
+}
+          
+1> Can we achieve Method overloading by changing the return type of method only ?
+Answer : Yes we can achieve in latest version but not in old vversion
+
+public class test 
+{
+    void show()
+    {
+         System.out.println("Hello");
+    }
+    int show(int x)
+    {
+        return x;
+    }
+   public static void main(String[] args) 
+   {
+       test obj = new test();
+    //    int x = obj.show(2);
+    //    System.out.println(x);
+       obj.show();
+   }  
+}
+
+
+2> Can we overload Main() method ?
+
+Answer : Yes we can override main because main is also an method 
+
+public class test 
+{
+   public static void main(String[] args) 
+   {    
+         test obj = new test();
+         System.out.println(1);
+        obj.main(10);
+   }  
+   public static void main(int x) 
+   {
+      System.out.println("2nd main"); 
+   }
+}
+
+
+
+Question : Will this work ?
+
+public class test 
+{
+    void show()
+    {
+         System.out.println("Hello");
+    }
+    void show(float x)
+    {
+        System.out.println(x);
+    }
+   public static void main(String[] args) 
+   {    
+        test obj = new test();
+        obj.show('a');
+   }  
+}
+
+
+Answer : Yes because of automatic promotion byte->short->char->int->float->long->double
+         but not reverse
+  
+
+Question what in case of object as argument ?:
+
+public class test 
+{
+    void show(Object a)
+    {
+         System.out.println("inside object");
+    }
+    void show(String x)
+    {
+        System.out.println(x);
+    }
+   public static void main(String[] args) 
+   {    
+        test obj = new test();
+        obj.show(1);
+   }  
+}
+
+Answer : In this case it will print inside object because object is main class of all classes
+
+public class test 
+{
+    void show(Object a)
+    {
+         System.out.println("inside object");
+    }
+    void show(String x)
+    {
+        System.out.println(x);
+    }
+   public static void main(String[] args) 
+   {    
+        test obj = new test();
+        obj.show("abc");
+   }  
+}
+
+Answer : In this case  abc will be printed because first child class is given preference
+
+
+Question : In case of Same Level of argument type 
+
+public class test 
+{
+    void show(StringBuffer a)
+
+    {
+         System.out.println("inside string buffer");
+    }
+    void show(String x)
+    {
+        System.out.println(x);
+    }
+   public static void main(String[] args) 
+   {    
+        test obj = new test();
+        obj.show("abc"); --> In this case abc will be printed
+        obj.show(new StringBuffer("abc")); ---> In this case StringBuffer is printed
+        obj.show(null); --> in this case ambiguous will be printed
+   }  
+
+}
+
+
+----------------------------------- Method overriding ---------------------------------------------
+1> Different class
+2> Same name
+3> Same argument --> Same type of arggument
+4> class A should inherits B
+
+
+Question ? Why method overriding is used ?
+Answer   ? lets take an example we create an animal class we know that in animal class every animal eat and speak so we have crated two method eat and speak but we know that the language of every human is not same but we cannot have more than one function having same name with same parameters so when we extends the animal class to Tiger we will change only the speak method having same name same parameter and rest of all method will remain same
+
+
+Question : Does overriding method must have different same return type ?
+Answer  : After 1.4 we have different covarent return type	if parent class method have type Object  child can return string
+
+Question : in case of access modifier we can override it
+Answer : Yes but the child access modifier should be greater than parent
+
+
+public class method 
+{
+    public void show()
+    {
+         System.out.println("I am main");
+         
+    }
+   public static void main(String[] args) 
+   {
+          method obj =  new B();
+          obj.show();
+   }    
+}
+
+class B extends method
+{
+    void show()   -> Cannot reduce the visibility of the inherited method from method
+    {
+    
+        System.out.println("I am inside B");
+    }
+}
+
+
+
+
+------------------------------------- Abstraction --------------------------------------------------
+Abstraction --> we hide internal details of code like for car ==> we only need to know about brake acc, steering wheel, we do not need to know about internal working
+
+Question : In java how many ways can we achieve Abstraction 
+Answer   : 1> By abstract (0---100%) abstraction
+           2> Interfaces (100%) abstraction
+
+
+1> Abstract --> a> In case of abstract it is not necessary we have to only declare a method but we can also  write its definition 
+
+b> if we make a method abstract inside a class that class should be abstract but  if a class is abstract then its method does not require to be abstract 
+
+c> if a class extends and abstract class so it is compulsory for the child class to make the body of all the abstract method 
+
+d> we cannot create object of abstract class --> because if we create an object we call an method but that method cannot be called because it does not have any body
+
+public class test 
+{
+
+   public static void main(String[] args) 
+   {
+       car nano = new car(4);
+       nano.start();
+
+   }    
+}
+
+
+
+abstract class vechicle
+{
+    int tyre;
+    abstract void start();
+}
+
+class car extends vechicle
+{
+   int  tyre;
+     car(int x)
+     {
+        this.tyre = x;
+     }
+
+    void start()
+    {
+       System.out.println("Starting by key" + " having "+ tyre);
+    }
+}
+
+class scooter extends vechicle
+{
+    int tyre;
+    scooter(int x)
+    {
+       this.tyre = x;
+    }
+     void start()
+     {
+        System.out.println("Start by kick havong "+ tyre);
+     }
+}
+
+
+
+
+2> Interfaces : a> It is type of abstraction which tell a class what to do;
+                b> we can achieve multiple inheritance
+                c> all method are public by default
+
+3> When we use want to inherit Interface we use  (implements)
+
+
+public class test implements A,B
+{
    
+      public void show()
+      {
+           System.out.println("Hello");
+      }
+     public static void main(String[] args) 
+     {
+           test obj  = new test();
+           obj.show();
+     }
+     
+}
+
+interface  A
+{ 
+     void show();
+}
+
+interface B
+{
+      void show();
+}

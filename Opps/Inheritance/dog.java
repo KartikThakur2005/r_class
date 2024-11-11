@@ -1,11 +1,27 @@
 public class dog extends animal
 {
 
-    public static void main(String[] args) 
-    {
-        dog jojo = new dog();
+       void test()
+      {
+            System.out.println("Testing");
+      }
 
-        jojo.eat();
+      public static void main(String[] args) 
+      {
+            abc joj =  new abc();
+            joj.eat();
+            joj.test();
+            
+      }
+    
+  
+}
 
-    }    
+
+class abc extends dog
+{
+         public static void main(String[] args) 
+         {
+              
+         }
 }
